@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pergunta</title>
+<style>
+    body {
+        background-color: #282a36; /* Fundo Drácula */
+        color: #f8f8f2; /* Texto Drácula */
+        font-family: Arial, sans-serif;
+        text-align: center;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+    }
+
+    h1 {
+        font-size: 26px;
+        margin-bottom: 40px;
+    }
+
+    button {
+        padding: 12px 22px;
+        font-size: 18px;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        margin: 10px;
+    }
+
+    #sim {
+        background-color: #50fa7b; /* Verde Drácula */
+        color: #282a36;
+        position: absolute;
+    }
+
+    #nao {
+        background-color: #ff5555; /* Vermelho Drácula */
+        color: #282a36;
+        position: relative;
+        z-index: 10;
+    }
+
+    #mensagem {
+        margin-top: 30px;
+        font-size: 22px;
+        display: none;
+    }
+</style>
+</head>
+<body>
+
+<h1>O ônibus de Rai vai quebrar?</h1>
+
+<button id="sim">Sim</button>
+<button id="nao">Não</button>
+
+<p id="mensagem"></p>
+
+<script>
+    const btnSim = document.getElementById("sim");
+    const btnNao = document.getElementById("nao");
+    const msg = document.getElementById("mensagem");
+
+    function moverBotao() {
+        const largura = window.innerWidth - 120;
+        const altura = window.innerHeight - 120;
+
+        const novaX = Math.random() * largura;
+        const novaY = Math.random() * altura;
+
+        btnSim.style.left = novaX + "px";
+        btnSim.style.top = novaY + "px";
+    }
+
+    btnSim.addEventListener("touchstart", moverBotao);
+    btnSim.addEventListener("mouseover", moverBotao);
+
+    btnNao.addEventListener("click", () => {
+        msg.innerText = "Ah tá bom... acharam que iam se dar bem né? 😂";
+        msg.style.display = "block";
+    });
+</script>
+
+</body>
+</html>
